@@ -105,12 +105,21 @@ func (mgr ClientMgr) GetNFSv41IO(ipaddr uint32) BasicStats {
 		}
 		return out
 	}
-	if err := call.Store(
-		&out.Status, &out.Error, &out.Time,
-		&out.Read, &out.Write,
-		&out.Open, &out.Close, &out.Getattr, &out.Lock,
-	); err != nil {
-		log.Panic(err)
+	if Gandi {
+		if err := call.Store(
+			&out.Status, &out.Error, &out.Time,
+			&out.Read, &out.Write,
+			&out.Open, &out.Close, &out.Getattr, &out.Lock,
+		); err != nil {
+			log.Panic(err)
+		}
+	} else {
+		if err := call.Store(
+			&out.Status, &out.Error, &out.Time,
+			&out.Read, &out.Write,
+		); err != nil {
+			log.Panic(err)
+		}
 	}
 	return out
 }

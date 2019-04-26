@@ -2,6 +2,10 @@ package dbus
 
 import "golang.org/x/sys/unix"
 
+// Gandi variable defines whether we should use Gandi specific struct fields.
+// When set to false, the Gandi specific fields will be empty
+var Gandi = false
+
 // BasicIO stores the statistics for NFS
 // Each field is a counter
 type BasicIO struct {
@@ -51,11 +55,10 @@ type PNFSOperations struct {
 // of the call type and status
 type BasicStats struct {
 	StatsBaseAnswer
-	Read  BasicIO
-	Write BasicIO
-	// Gandi specific fields for NFSv41
-	Open    OperationStat
-	Close   OperationStat
-	Getattr OperationStat
-	Lock    OperationStat
+	Read    BasicIO
+	Write   BasicIO
+	Open    OperationStat // Gandi specific
+	Close   OperationStat // Gandi specific
+	Getattr OperationStat // Gandi specific
+	Lock    OperationStat // Gandi specific
 }
