@@ -16,6 +16,7 @@ func main() {
 		listenAddress     = kingpin.Flag("web.listen-address", "Address on which to expose metrics and web interface.").Default(":9573").String()
 		metricsPath       = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
 		exporterCollector = kingpin.Flag("collector.exports", "Activate exports collector").Default("true").Bool()
+		gandi             = kingpin.Flag("gandi", "Activate Gandi specific fields").Default("false").Bool()
 	)
 
 	ec := NewExportsCollector()
@@ -24,6 +25,8 @@ func main() {
 	kingpin.Version(version.Print("ctld_exporter"))
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
+
+	dbus.Gandi = *gandi
 
 	reg := prometheus.NewPedanticRegistry()
 	reg.MustRegister(
