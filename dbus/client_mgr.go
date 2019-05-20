@@ -72,7 +72,7 @@ func (mgr ClientMgr) GetNFSv3IO(ipaddr string) BasicStats {
 	return out
 }
 
-func (mgr ClientMgr) GetNFSv40IO(ipaddr uint32) BasicStats {
+func (mgr ClientMgr) GetNFSv40IO(ipaddr string) BasicStats {
 	out := BasicStats{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.clientstats.GetNFSv40IO", 0, ipaddr)
 	if call.Err != nil {
@@ -93,7 +93,7 @@ func (mgr ClientMgr) GetNFSv40IO(ipaddr uint32) BasicStats {
 	return out
 }
 
-func (mgr ClientMgr) GetNFSv41IO(ipaddr uint32) BasicStats {
+func (mgr ClientMgr) GetNFSv41IO(ipaddr string) BasicStats {
 	out := BasicStats{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.clientstats.GetNFSv41IO", 0, ipaddr)
 	if call.Err != nil {
@@ -124,7 +124,7 @@ func (mgr ClientMgr) GetNFSv41IO(ipaddr uint32) BasicStats {
 	return out
 }
 
-func (mgr ClientMgr) GetNFSv41Layouts(ipaddr uint32) PNFSOperations {
+func (mgr ClientMgr) GetNFSv41Layouts(ipaddr string) PNFSOperations {
 	out := PNFSOperations{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.clientstats.GetNFSv41Layouts", 0, ipaddr)
 	if call.Err != nil {

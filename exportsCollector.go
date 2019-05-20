@@ -9,107 +9,107 @@ import (
 
 var (
 	nfsV3RequestedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_requested_bytes_total",
+		"ganesha_exports_nfs_v3_requested_bytes_total",
 		"Number of requested bytes for NFSv3 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV3TransferedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_transfered_bytes_total",
+		"ganesha_exports_nfs_v3_transfered_bytes_total",
 		"Number of transfered bytes for NFSv3 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV3OperationsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_operations_total",
+		"ganesha_exports_nfs_v3_operations_total",
 		"Number of operations for NFSv3",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV3ErrorsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_operations_errors_total",
+		"ganesha_exports_nfs_v3_operations_errors_total",
 		"Number of operations in error for NFSv3",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV3LatencyDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_operations_latency_seconds_total",
+		"ganesha_exports_nfs_v3_operations_latency_seconds_total",
 		"Cumulative time consumed by operations for NFSv3",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV3QueueWaitDesc = prometheus.NewDesc(
-		"ganesha_nfs_v3_operations_queue_wait_seconds_total",
+		"ganesha_exports_nfs_v3_operations_queue_wait_seconds_total",
 		"Cumulative time spent in rpc wait queue for NFSv3",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40RequestedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_requested_bytes_total",
+		"ganesha_exports_nfs_v40_requested_bytes_total",
 		"Number of requested bytes for NFSv4.0 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40TransferedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_transfered_bytes_total",
+		"ganesha_exports_nfs_v40_transfered_bytes_total",
 		"Number of transfered bytes for NFSv4.0 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40OperationsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_operations_total",
+		"ganesha_exports_nfs_v40_operations_total",
 		"Number of operations for NFSv4.0",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40ErrorsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_operations_errors_total",
+		"ganesha_exports_nfs_v40_operations_errors_total",
 		"Number of operations in error for NFSv4.0",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40LatencyDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_operations_latency_seconds_total",
+		"ganesha_exports_nfs_v40_operations_latency_seconds_total",
 		"Cumulative time consumed by operations for NFSv4.0",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV40QueueWaitDesc = prometheus.NewDesc(
-		"ganesha_nfs_v40_operations_queue_wait_seconds_total",
+		"ganesha_exports_nfs_v40_operations_queue_wait_seconds_total",
 		"Cumulative time spent in rpc wait queue for NFSv4.0",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41RequestedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_requested_bytes_total",
+		"ganesha_exports_nfs_v41_requested_bytes_total",
 		"Number of requested bytes for NFSv4.1 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41TransferedDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_transfered_bytes_total",
+		"ganesha_exports_nfs_v41_transfered_bytes_total",
 		"Number of transfered bytes for NFSv4.1 operations",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41OperationsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_operations_total",
+		"ganesha_exports_nfs_v41_operations_total",
 		"Number of operations for NFSv4.1",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41ErrorsDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_operations_errors_total",
+		"ganesha_exports_nfs_v41_operations_errors_total",
 		"Number of operations in error for NFSv4.1",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41LatencyDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_operations_latency_seconds_total",
+		"ganesha_exports_nfs_v41_operations_latency_seconds_total",
 		"Cumulative time consumed by operations for NFSv4.1",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	nfsV41QueueWaitDesc = prometheus.NewDesc(
-		"ganesha_nfs_v41_operations_queue_wait_seconds_total",
+		"ganesha_exports_nfs_v41_operations_queue_wait_seconds_total",
 		"Cumulative time spent in rpc wait queue for NFSv4.1",
 		[]string{"direction", "exportid", "path"}, nil,
 	)
 	pnfsLayoutOperationsDesc = prometheus.NewDesc(
-		"ganesha_pnfs_v41_layout_operations_total",
+		"ganesha_exports_pnfs_v41_layout_operations_total",
 		"Numer of layout operations for pNFSv4.1",
 		[]string{"type", "exportid", "path"}, nil,
 	)
 	pnfsLayoutErrorsDesc = prometheus.NewDesc(
-		"ganesha_pnfs_v41_layout_operations_errors_total",
+		"ganesha_exports_pnfs_v41_layout_operations_errors_total",
 		"Numer of layout operations in error for pNFSv4.1",
 		[]string{"type", "exportid", "path"}, nil,
 	)
 	pnfsLayoutDelayDesc = prometheus.NewDesc(
-		"ganesha_pnfs_v41_layout_delay_seconds_total",
+		"ganesha_exports_pnfs_v41_layout_delay_seconds_total",
 		"Cumulative delay time for pNFSv4.1",
 		[]string{"direction", "exportid", "path"}, nil,
 	)

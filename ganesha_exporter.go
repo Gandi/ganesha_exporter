@@ -15,11 +15,12 @@ func main() {
 	var (
 		listenAddress     = kingpin.Flag("web.listen-address", "Address on which to expose metrics and web interface.").Default(":9573").String()
 		metricsPath       = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
-		exporterCollector = kingpin.Flag("collector.exports", "Activate exports collector").Default("true").Bool()
 		gandi             = kingpin.Flag("gandi", "Activate Gandi specific fields").Default("false").Bool()
+		exporterCollector = kingpin.Flag("collector.exports", "Activate exports collector").Default("true").Bool()
 	)
-
 	ec := NewExportsCollector()
+	var clientCollector = kingpin.Flag("collector.clients", "Activate clients collector").Default("true").Bool()
+	cc := NewClientsCollector()
 
 	log.AddFlags(kingpin.CommandLine)
 	kingpin.Version(version.Print("ctld_exporter"))
@@ -35,6 +36,9 @@ func main() {
 	)
 	if *exporterCollector {
 		reg.MustRegister(ec)
+	}
+	if *clientCollector {
+		reg.MustRegister(cc)
 	}
 	http.Handle(*metricsPath, promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
