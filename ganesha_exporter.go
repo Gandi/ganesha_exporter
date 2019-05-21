@@ -13,7 +13,7 @@ import (
 
 func main() {
 	var (
-		listenAddress     = kingpin.Flag("web.listen-address", "Address on which to expose metrics and web interface.").Default(":9573").String()
+		listenAddress     = kingpin.Flag("web.listen-address", "Address on which to expose metrics and web interface.").Default(":9587").String()
 		metricsPath       = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
 		gandi             = kingpin.Flag("gandi", "Activate Gandi specific fields").Default("false").Bool()
 		exporterCollector = kingpin.Flag("collector.exports", "Activate exports collector").Default("true").Bool()
