@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./dbus"
+	"github.com/Gandi/ganesha_exporter/dbus"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
