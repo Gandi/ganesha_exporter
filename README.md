@@ -44,6 +44,8 @@ Flags:
       --version                  Show application version.
 ```
 
+All collectors are activated by default, they can be de-activated using `--no-collector.XXX`
+
 The additional statistics retrieved by the `--gandi` flag are part of an internal WIP to get more
 comprehensive statistics and will be proposed upstream as soon as they are fully done.
 
