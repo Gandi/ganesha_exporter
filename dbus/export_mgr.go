@@ -1,14 +1,15 @@
 package dbus
 
 import (
+	"log"
+
 	"github.com/godbus/dbus"
 	"golang.org/x/sys/unix"
-	"log"
 )
 
 // Export Structure of the output of ShowExports dbus call
 type Export struct {
-	ExportID uint32
+	ExportID uint16
 	Path     string
 	NFSv3    bool
 	MNTv3    bool
@@ -52,7 +53,7 @@ func (mgr ExportMgr) ShowExports() (unix.Timespec, []Export) {
 	return utime, exports
 }
 
-func (mgr ExportMgr) GetNFSv3IO(exportID uint32) BasicStats {
+func (mgr ExportMgr) GetNFSv3IO(exportID uint16) BasicStats {
 	out := BasicStats{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.exportstats.GetNFSv3IO", 0, exportID)
 	if call.Err != nil {
@@ -73,7 +74,7 @@ func (mgr ExportMgr) GetNFSv3IO(exportID uint32) BasicStats {
 	return out
 }
 
-func (mgr ExportMgr) GetNFSv40IO(exportID uint32) BasicStats {
+func (mgr ExportMgr) GetNFSv40IO(exportID uint16) BasicStats {
 	out := BasicStats{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.exportstats.GetNFSv40IO", 0, exportID)
 	if call.Err != nil {
@@ -94,7 +95,7 @@ func (mgr ExportMgr) GetNFSv40IO(exportID uint32) BasicStats {
 	return out
 }
 
-func (mgr ExportMgr) GetNFSv41IO(exportID uint32) BasicStats {
+func (mgr ExportMgr) GetNFSv41IO(exportID uint16) BasicStats {
 	out := BasicStats{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.exportstats.GetNFSv41IO", 0, exportID)
 	if call.Err != nil {
@@ -125,7 +126,7 @@ func (mgr ExportMgr) GetNFSv41IO(exportID uint32) BasicStats {
 	return out
 }
 
-func (mgr ExportMgr) GetNFSv41Layouts(exportID uint32) PNFSOperations {
+func (mgr ExportMgr) GetNFSv41Layouts(exportID uint16) PNFSOperations {
 	out := PNFSOperations{}
 	call := mgr.dbusObject.Call("org.ganesha.nfsd.exportstats.GetNFSv41Layouts", 0, exportID)
 	if call.Err != nil {
